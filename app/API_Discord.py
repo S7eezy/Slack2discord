@@ -184,4 +184,5 @@ class DiscordClient:
             await self.client.get_channel(channel).send(file=discord.File(f"temp/{filename}"))
             os.remove(os.path.join("temp", filename))
         else:
-            self.createErrorEmbed(title=time, file_url=file, file_name=filename, file_size=size, author="File size over 8Mb")
+            embedVar = self.createErrorEmbed(title=time, file_url=file, file_name=filename, file_size=size, author="File size over 8Mb")
+            await self.client.get_channel(channel).send(embed=embedVar)
