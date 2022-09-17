@@ -119,7 +119,7 @@ class DiscordClient:
         return embedVar
 
     @staticmethod
-    def createErrorEmbed(color=0xe62222, title=None, file_url=None, file_name=None, file_size=None, author="Warning", icon="https://upload.wikimedia.org/wikipedia/commons/c/c7/Warning-icon-png-2749.png") -> discord.Embed:
+    def createErrorEmbed(color=0xe62222, title=None, file_url=None, file_name=None, file_size=None, author="Warning", icon="https://icones.pro/wp-content/uploads/2021/05/symbole-d-avertissement-jaune.png") -> discord.Embed:
         """
         Create a Discord error embed message. Used for size limitation during uploads.
 
