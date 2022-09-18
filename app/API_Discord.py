@@ -71,7 +71,7 @@ class DiscordClient:
             isFirst = True
             parts = self.splitMessage(message=data["text"])
             for part in parts:
-                if part != '' and part is not None:
+                if part != '' and part != ' ' and part != '\n' and part is not None:
                     embedVar = self.createEmbed(title=datetime.fromtimestamp(float(data["time"])), value=part, author=data["user"], icon=data["icon"], isFirst=isFirst)
                     await self.client.get_channel(channel).send(embed=embedVar)
                     isFirst = False
