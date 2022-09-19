@@ -75,7 +75,7 @@ class Engine:
                         for message in json.load(f):
                             if "subtype" not in message and "bot_id" not in message:
                                 time = float(message["ts"])
-                                text = message["text"].replace("&amp;", "&").replace("-&gt;", "-")
+                                text = message["text"].replace("&amp;", "&").replace("&gt;", ">").replace("&lt;", "<")
                                 user = self.users[message["user"]]["name"]
                                 icon = self.users[message["user"]]["icon"]
                                 if "text" in message and "user_profile" in message and "ts" in message:
