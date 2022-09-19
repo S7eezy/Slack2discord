@@ -67,6 +67,14 @@ class DiscordClient:
         :param data: data dict
         :return: None
         """
+        
+        links = []
+        if "<" in data["text"] and ">" in data["text"]:
+            dataSplit = data["text"].split("<")
+            for s in dataSplit:
+                if "http" in s:
+                    links.append(s.split(">")[0])
+        
         if len(data["text"]) > 1023:
             isFirst = True
             parts = self.splitMessage(message=data["text"])
@@ -83,6 +91,10 @@ class DiscordClient:
         if data["file"] is not None:
             for file in data["file"]:
                 await self.getFile(file=file, time=datetime.fromtimestamp(float(data["time"])), channel=channel)
+        
+        if links:
+            for link in links:
+                await self.client.get_channel(channel).send(link)
 
         await self.client.get_channel(channel).send(file=discord.File("temp/divider.png"))
 
